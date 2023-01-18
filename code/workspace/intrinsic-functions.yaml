@@ -22,14 +22,19 @@ Parameters:
       - t2.micro
       - t2.small
     Description: 'Enter t2.micro or t2.small. Default is t2.micro.'
-
+  AmiID:
+    Description: The ID of the AMI.
+    Type: AWS::EC2::Image::Id
   # Add AmiId parameter here
 
 Resources:
   WebServerInstance:
-    Type: AWS::EC2::Instance
+    Type: 'AWS::EC2::Instance'
     Properties:
-      # Use !Ref function in ImageId property
-      ImageId: ami-00a1270ce1e007c27
       InstanceType: !Ref InstanceType
-      # Add Tags property here
+      ImageId: !Ref AmiID
+      Tags:
+        - Key: Name
+          Value: !Join [ '-', [ !Ref InstanceType, webserver ] ]
+        - Key: InstanceType
+          Value: !Sub ${InstanceType}
