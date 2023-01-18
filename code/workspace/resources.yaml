@@ -23,7 +23,7 @@ Metadata:
 Parameters:
   InstanceType:
     Type: String
-    Default: t2.micro
+    Default: t2.small
     AllowedValues:
       - t2.micro
       - t2.small
@@ -36,6 +36,6 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: !Ref InstanceType
-      ImageId: ami-0b5eea76982371e91
+      ImageId: ami-0fe472d8a85bc7b0e
 
 
