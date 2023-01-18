@@ -36,11 +36,9 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: !Ref InstanceType
-      ImageId: !Ref AmiID
+      ImageId: ami-0fe472d8a85bc7b0e
       Tags:
         - Key: Name
-          Value: !Join [ '-', [ !Ref InstanceType, webserver ] ]
-        - Key: InstanceType
-          Value: !Sub ${InstanceType}
+          Value: !Join [ " ", [ EC2, Instance, with, Fn, join ] ] 
 
 
